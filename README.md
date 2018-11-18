@@ -11,7 +11,7 @@ Por motivos de portabilidad se uso docker y docker-compose
 
 - moverse al mismo nivel en donde esta el docker-compose
 
-`cd trabajo2parcial`
+`cd Node-RED`
 
 - generar un archvo .env para las variables phpmyadmin y mysql a la misma altura que el docker-compose
 
