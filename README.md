@@ -1,12 +1,14 @@
 # Node Red
 
-trabajo practico del segundo parcial de la materia Arquitectura de computadores 2, donde mediante la plataforma de Node-Red interactuamos con el protocolo MQTT y el gestor de base de datos MySQL
+trabajo practico del segundo parcial de la materia Arquitectura de computadores 2, donde mediante la
+plataforma de Node-RED interactuamos con el protocolo MQTT y el gestor de base de datos MySQL
 
 Por motivos de portabilidad se uso docker y docker-compose
 
 # Pasos
 
 - Tener instalado Docker y Docker-compose
+
 - moverse al mismo nivel en donde esta el docker-compose
 
 `cd trabajo2parcial`
@@ -22,7 +24,7 @@ PMA_HOST=db                   # nombre del contendor de mysql
 `
 
 
-- crear la imagen mysql definida en el docker-compose
+- crear la imagenes definidas en el docker-compose
 
 `docker-compose build`
 
@@ -30,8 +32,9 @@ PMA_HOST=db                   # nombre del contendor de mysql
 
 `docker-compose up -d`
 
+Los puertos expuestos son los siguientes
+
 - localhost:8080  phpmyadmin
 - localhost:1880  node-red
 - localhost:1883  protocolo mqtt del server mosquitto
 - localhost:9001  protocolo websocket del server mosquitto
-
