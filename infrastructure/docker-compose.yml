@@ -1,0 +1,51 @@
+version: '3'
+services:
+  node-red:
+    image: nodered/node-red-docker
+    container_name: node-red
+    ports:
+      - "1880:1880"
+    networks: 
+      net:
+    volumes:
+      - "arqui-node-red:/data"
+    depends_on:
+      - db
+      - mqtt
+  mqtt:
+    image: eclipse-mosquitto
+    container_name: mqtt
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    networks: 
+      net:
+    volumes:
+      - "arqui-mqtt:/mosquitto/data"
+  db:
+    container_name: db
+    image: arqui-mysql
+    build:
+      dockerfile: Dockerfile
+      context: "$PWD/docker/mysql"
+    env_file: .env
+    networks:
+      net:
+    volumes:
+      - "arqui-db:/var/lib/mysql"
+  php-my-admin:
+    container_name: php-my-admin
+    image: phpmyadmin/phpmyadmin
+    env_file: .env
+    ports:
+      - "8080:80"
+    networks:
+      net:
+    depends_on:
+      - db
+networks: 
+  net:
+volumes:
+  arqui-node-red:
+  arqui-mqtt:
+  arqui-db:
