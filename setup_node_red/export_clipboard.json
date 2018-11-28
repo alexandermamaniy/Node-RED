@@ -1,0 +1,166 @@
+[
+    {
+        "id": "b769b1d9.c8e3b",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "db3d4d86.78092",
+        "type": "mqtt in",
+        "z": "b769b1d9.c8e3b",
+        "name": "",
+        "topic": "temp",
+        "qos": "0",
+        "broker": "f2fa6608.c1cfc8",
+        "x": 176.6903190612793,
+        "y": 112.92044067382812,
+        "wires": [
+            [
+                "16c060c8.65834f"
+            ]
+        ]
+    },
+    {
+        "id": "e005246e.0172c8",
+        "type": "debug",
+        "z": "b769b1d9.c8e3b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 651.701789855957,
+        "y": 123.3692798614502,
+        "wires": []
+    },
+    {
+        "id": "b23aef3e.b0065",
+        "type": "ui_gauge",
+        "z": "b769b1d9.c8e3b",
+        "name": "",
+        "group": "7d001ad1.82e6d4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 511.6903076171875,
+        "y": 342.62499046325684,
+        "wires": []
+    },
+    {
+        "id": "63589edb.f1485",
+        "type": "function",
+        "z": "b769b1d9.c8e3b",
+        "name": "",
+        "func": "\nmsg.topic = `INSERT INTO data (temperature) VALUES ( ${msg.payload} )`;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 347.70165634155273,
+        "y": 242.3323483467102,
+        "wires": [
+            [
+                "e005246e.0172c8",
+                "5cd077da.0cd7b8",
+                "b23aef3e.b0065"
+            ]
+        ]
+    },
+    {
+        "id": "5cd077da.0cd7b8",
+        "type": "mysql",
+        "z": "b769b1d9.c8e3b",
+        "mydb": "4e034caf.3a6a34",
+        "name": "temperature",
+        "x": 542.7017402648926,
+        "y": 268.13350105285645,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "16c060c8.65834f",
+        "type": "delay",
+        "z": "b769b1d9.c8e3b",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 184.69032287597656,
+        "y": 234.1136131286621,
+        "wires": [
+            [
+                "63589edb.f1485"
+            ]
+        ]
+    },
+    {
+        "id": "f2fa6608.c1cfc8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "mosquitto-mqtt",
+        "broker": "mqtt",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "7d001ad1.82e6d4",
+        "type": "ui_group",
+        "z": "",
+        "name": "Default",
+        "tab": "edd9b0a5.e5d78",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "4e034caf.3a6a34",
+        "type": "MySQLdatabase",
+        "z": "",
+        "host": "db",
+        "port": "3306",
+        "db": "temperature",
+        "tz": ""
+    },
+    {
+        "id": "edd9b0a5.e5d78",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Home",
+        "icon": "dashboard"
+    }
+]
