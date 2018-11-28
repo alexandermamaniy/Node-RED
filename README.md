@@ -38,3 +38,24 @@ Los puertos expuestos son los siguientes
 - localhost:1880  node-red
 - localhost:1883  protocolo mqtt del server mosquitto
 - localhost:9001  protocolo websocket del server mosquitto
+
+
+# NODECMU(ESP8266) 
+
+  exites 2 clientes ESP8266
+  uno que envia la temperatura del ambiente
+  y otro que recibe y enciende un LED
+  ambos esta bajo el topico temp
+
+
+ el codigo de ambos clientes se encuentra en la carpeta  ESP8266
+ 
+ colocar la RED, CONTRASEÑA , IP o HOSTNAME del server mqtt y PUERTO
+ 
+`const char* ssid = "mi_red";`
+
+`const char* password = "mi_contraseña";`
+
+`const char* mqttServer = "server_mqtt"; `
+
+`const int mqttPort = 1883; `
