@@ -25,11 +25,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
   float value;
   value = data .toFloat();
   if (value > 29) {
-    Serial.println("LOW");
-    digitalWrite(LED, LOW);
-  } else {
-    Serial.println("HIGH");
-    digitalWrite(LED, HIGH);
+    	Serial.println("HIGH");
+    	digitalWrite(LED, HIGH);
+      } else {
+	Serial.println("LOW");
+    	digitalWrite(LED, LOW);
+
   }
 }
 void setup() {
