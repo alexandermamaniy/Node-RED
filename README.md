@@ -15,13 +15,16 @@ Por motivos de portabilidad se uso docker y docker-compose
 
 - generar un archvo .env para las variables phpmyadmin y mysql a la misma altura que el docker-compose
 
-`
-MYSQL_ROOT_PASSWORD=contraseñaRoot
-MYSQL_USER=user
-MYSQL_PASSWORD=passwordUser
-MYSQL_DATABASE=nombreBaseDeDatos
-PMA_HOST=db                   # nombre del contendor de mysql
-`
+`MYSQL_ROOT_PASSWORD=contraseñaRoot`
+
+`MYSQL_USER=user`
+
+`MYSQL_PASSWORD=passwordUser`
+
+`MYSQL_DATABASE=nombreBaseDeDatos`
+
+`PMA_HOST=db                   # nombre del contendor de mysql`
+
 
 
 - crear la imagenes definidas en el docker-compose
